@@ -425,7 +425,6 @@ body {
   }
 }
 
-/* your .blue-text class adds an underline image; this turns it off here */
 .stats .blue-text::after {
   display: none;
 }
@@ -536,22 +535,26 @@ body {
 }
 
 .pricing {
-  padding: 2rem 3rem;
+  padding: 0.6rem 3rem;
   text-align: center;
 
   @media screen and (max-width: 767px) {
-    padding: 3rem 18px;
+    padding: 0.9rem 18px;
   }
 }
 
-.section-title {
+.pricing-title {
   position: relative;
   display: inline-block;
-  font-size: 2rem;
+  font-size: 32px;
   padding-left: 1rem;
+  font-weight: 700;
+  @media screen and (max-width: 767px) {
+    font-size: 28px;
+  }
 }
 
-.section-title::before {
+.pricing-title::before {
   content: "";
   position: absolute;
   left: 0;
@@ -559,13 +562,17 @@ body {
   bottom: 0;
   width: 5px;
   background: linear-gradient(180deg, #112232 0%, rgba(77, 107, 136, 0) 100%);
+  @media screen and (max-width: 767px) {
+    bottom: 0.2rem;
+  }
 }
 
 .pricing-intro {
   max-width: 480px;
   margin: 0.75rem auto 0;
-  font-size: 0.85rem;
+  font-size: 15px;
   line-height: 1.6;
+  font-weight: 400;
 }
 
 .plans {
@@ -573,10 +580,10 @@ body {
   grid-template-columns: repeat(3, 1fr);
   max-width: 900px;
   margin: 6rem auto 8rem;
-  border: 1px solid #cfdcf3;
+  border: 0.4px solid var(--blue-color);
   border-radius: 12px;
   text-align: left;
-
+  box-shadow: 0 4px 24px #0000000d;
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -588,10 +595,10 @@ body {
 
 .plan {
   padding: 1.3rem 2.5rem;
-
   @media screen and (max-width: 767px) {
     padding: 1.5rem;
-    border: 1px solid #cfdcf3;
+    box-shadow: 0 4px 24px #0000000d;
+    border: 0.4px solid var(--blue-color);
     border-radius: 12px;
   }
 }
@@ -612,20 +619,21 @@ body {
 }
 
 .plan-name {
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 400;
   margin-bottom: 1.5rem;
 }
 
 .price {
-  font-size: 1.6rem;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .plan-desc {
-  font-size: 0.85rem;
+  font-size: 14px;
   margin-bottom: 1.5rem;
+  font-weight: 400;
 }
 
 .plan-features {
@@ -637,10 +645,10 @@ body {
 .plan-features li {
   position: relative;
   padding-left: 1.5rem;
-  font-size: 0.75rem;
+  font-size: 12px;
+  font-weight: 400;
 }
 
-/* blue check icon */
 .plan-features li::before {
   content: "";
   position: absolute;
@@ -665,14 +673,18 @@ body {
 
 .btn-outline,
 .btn-solid {
+  width: 160px;
   font: inherit;
   font-size: 0.8rem;
   border: 1px solid var(--blue-text);
   border-radius: 100px;
-  padding: 0.6rem 1.5rem;
+  padding: 0.6rem 0;
+  text-align: center;
   cursor: pointer;
+  @media screen and (max-width: 767px) {
+    width: 150px;
+  }
 }
-
 .btn-outline {
   background: white;
   color: var(--blue-text);
@@ -681,10 +693,4 @@ body {
 .btn-solid {
   background-color: var(--blue-text);
   color: white;
-}
-
-.btn-outline:focus-visible,
-.btn-solid:focus-visible {
-  outline: 2px solid var(--blue-text);
-  outline-offset: 3px;
 }
