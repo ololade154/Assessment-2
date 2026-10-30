@@ -20,6 +20,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: "Gilroy", sans-serif;
 }
@@ -32,6 +40,7 @@ body {
   --light-blue: #f9fbfd;
   --header-bg: #faf8ee;
   --icon-bg: #3284ff21;
+  --navy: linear-gradient(180deg, #1e3448 99.99%, rgba(30, 52, 72, 0) 100%);
 }
 .blue-text {
   color: var(--blue-text);
@@ -447,20 +456,25 @@ body {
 }
 .features {
   display: grid;
-  grid-template-columns: 1fr 1.6fr; /* left column narrower than right */
+  grid-template-columns: 1fr 1.6fr;
   gap: 4rem;
   padding: 6rem 5rem;
 
   @media screen and (max-width: 767px) {
-    grid-template-columns: 1fr; /* stack: intro on top, cards below */
+    grid-template-columns: 1fr;
     gap: 2rem;
     padding: 3rem 1.3rem;
   }
+}
+.features-intro {
+  width: 100%;
+  max-width: 335px;
 }
 
 .features-intro h2 {
   position: relative;
   padding-left: 1rem;
+  font-size: 30px;
 }
 
 .features-intro h2::before {
@@ -477,13 +491,14 @@ body {
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--text-color);
+  margin-top: 0.7rem;
+  font-weight: 400;
 }
 
-/* right side: 2 x 2 grid */
 .features-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem 2.5rem; /* row gap, column gap */
+  gap: 3rem 2.5rem;
 
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr;
@@ -498,7 +513,7 @@ body {
   background-color: var(--icon-bg);
   display: grid;
   place-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .feature-icon img {
@@ -509,10 +524,167 @@ body {
 .feature h3 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .feature p {
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--text-color);
+  font: 400;
+}
+
+.pricing {
+  padding: 2rem 3rem;
+  text-align: center;
+
+  @media screen and (max-width: 767px) {
+    padding: 3rem 18px;
+  }
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, #112232 0%, rgba(77, 107, 136, 0) 100%);
+}
+
+.pricing-intro {
+  max-width: 480px;
+  margin: 0.75rem auto 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 900px;
+  margin: 6rem auto 8rem;
+  border: 1px solid #cfdcf3;
+  border-radius: 12px;
+  text-align: left;
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2.5rem auto;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+.plan {
+  padding: 1.3rem 2.5rem;
+
+  @media screen and (max-width: 767px) {
+    padding: 1.5rem;
+    border: 1px solid #cfdcf3;
+    border-radius: 12px;
+  }
+}
+
+.plan-featured {
+  margin: -3.5rem 0;
+  background: var(--navy);
+  color: white;
+  border-radius: 8px;
+  padding-top: 4rem;
+
+  @media screen and (max-width: 767px) {
+    margin: 0;
+    border-color: var(--navy);
+    border-radius: 12px;
+    padding-top: 1.5rem;
+  }
+}
+
+.plan-name {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.plan-desc {
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.plan-features {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.plan-features li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.75rem;
+}
+
+/* blue check icon */
+.plan-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  translate: 0 -50%;
+  width: 12px;
+  height: 12px;
+  background: url("/icons/check-circle.svg") no-repeat center / contain;
+}
+
+.plan-featured .plan-features li::before {
+  background-image: url("/icons/white-check-circle.svg");
+}
+
+.pricing-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-outline,
+.btn-solid {
+  font: inherit;
+  font-size: 0.8rem;
+  border: 1px solid var(--blue-text);
+  border-radius: 100px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: white;
+  color: var(--blue-text);
+}
+
+.btn-solid {
+  background-color: var(--blue-text);
+  color: white;
+}
+
+.btn-outline:focus-visible,
+.btn-solid:focus-visible {
+  outline: 2px solid var(--blue-text);
+  outline-offset: 3px;
 }
